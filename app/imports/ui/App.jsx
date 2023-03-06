@@ -18,20 +18,29 @@ const deleteTask = ({ _id }) => TasksCollection.remove(_id);
 
 
     return (
-      <div>
-        <h1>Welcome to Meteor!</h1>
+        <div className="app">
+          <header>
+            <div className="app-bar">
+              <div className="app-header">
+                <h1>Welcome to Meteor!</h1>
+              </div>
+            </div>
+          </header>
 
-        <TaskForm/>
+          <div className="main">
+            <TaskForm />
 
-        <ul>
-          { tasks.map(task => <Task
-              key={ task._id }
-              task={ task }
-              onCheckboxClick={toggleChecked}
-              onDeleteClick={deleteTask}
-          />) }
-        </ul>
-
-      </div>
-  );
+            <ul className="tasks">
+              {tasks.map(task => (
+                  <Task
+                      key={task._id}
+                      task={task}
+                      onCheckboxClick={toggleChecked}
+                      onDeleteClick={deleteTask}
+                  />
+              ))}
+            </ul>
+          </div>
+        </div>
+    );
 };
